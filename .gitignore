@@ -1,0 +1,7 @@
+# ignorara
+entorno_*
+
+# es la forma 
+*.pyc
+
+.env
