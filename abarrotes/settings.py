@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+
+from datetime import timedelta
 from os import environ
 from dotenv import load_dotenv
 from pathlib import Path
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'gestion',
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,23 @@ AUTH_USER_MODEL = 'gestion.Usuario'
 MEDIA_ROOT = BASE_DIR / 'imagenes'
 
 MEDIA_URL = 'imagenes/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        # sirve para indicar a DRF cual sera la clase se usara para las cosas relacionadas a la autenticacion
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=365)
+}
+
+SWAGGER_SETTING = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'apiKey'
+        }
+    }
+}
