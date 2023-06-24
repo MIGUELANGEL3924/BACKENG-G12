@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Imagen, Categoria, Producto, Usuario
+from .models import (Imagen,
+                     Categoria,
+                     Producto,
+                     Usuario)
 
 
 class ImagenAdmin(admin.ModelAdmin):

@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 generadorSchema = get_schema_view(
     openapi.Info(
@@ -28,8 +29,9 @@ generadorSchema = get_schema_view(
         description='API de abarrotes con autenticacion',
         contact=openapi.Contact(
             name='Miguel Angel Quispe Torres', email='mkitito2484@gmail.com')
-    )
-
+    ),
+    # public > muestra todos los endpoint inclusive los que son accesibles solo con permisos determinados
+    public=True
 )
 
 

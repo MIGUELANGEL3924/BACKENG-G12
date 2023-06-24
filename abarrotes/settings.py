@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 from datetime import timedelta
 from os import environ
 from dotenv import load_dotenv
@@ -149,15 +148,21 @@ REST_FRAMEWORK = {
     )
 }
 
+
+# Sirve para modificar la configuracion de rest framenwork simple JWT
 SIMPLE_JWT = {
 
     'ACCESS_TOKEN_LIFETIME': timedelta(days=365)
 }
-
+# Sirve para configuara la documentacion de nuestro Swagger
 SWAGGER_SETTING = {
     'SECURITY_DEFINITIONS': {
         'basic': {
-            'type': 'apiKey'
+            # https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md#security-definitions-object
+            'type': 'apiKey',
+            'description': 'Bearer <YOUR_TOKEN>',
+            'name': 'Authorization',  # el header por el cual se va a enviar esta token
+            'in': 'header',  # donde se pasaria la token , por el query param o por los headers
         }
     }
 }
