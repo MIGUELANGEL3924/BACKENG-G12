@@ -84,3 +84,19 @@ class CategoriasController(APIView):
         return Response(data={
             'content': serializador.data
         })
+
+
+class ProductosController(APIView):
+    parser_classes = [MultiPartParser, FormParser]
+
+    @swagger_auto_schema(request_body=ProductoSerializer, operation_summary='Crear producto')
+    def post(self, request: Request | HttpRequest):
+        try:
+            return Response(data={
+
+            }, status=status.HTTP_201_CREATED)
+        except Exception as err:
+            return Response(data={
+                'message': 'Error al crear la categoria',
+                'content': err.args
+            }, status=status.HTTP_400_BAD_REQUEST)
