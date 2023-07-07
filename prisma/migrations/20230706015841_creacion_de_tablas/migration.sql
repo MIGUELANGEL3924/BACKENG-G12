@@ -1,5 +1,5 @@
 -- CreateEnum
-CREATE TYPE "tipoUsuario" AS ENUM ('ADMIN', 'CLIENTE');
+CREATE TYPE "TipoUsuario" AS ENUM ('ADMIN', 'CLIENTE');
 
 -- CreateTable
 CREATE TABLE "usuarios" (
@@ -8,7 +8,7 @@ CREATE TABLE "usuarios" (
     "apellido" TEXT,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
-    "tipo_usuario" "tipoUsuario" NOT NULL,
+    "tipo_usuario" "TipoUsuario" NOT NULL,
 
     CONSTRAINT "usuarios_pkey" PRIMARY KEY ("id")
 );
